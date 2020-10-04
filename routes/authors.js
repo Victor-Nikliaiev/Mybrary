@@ -32,10 +32,8 @@ router.post('/', async(req, res) => {
         name: req.body.name
     })
     try {
-        console.log(author)
-        await author.save()
-        res.render('index.ejs')
-
+        const authorSaved = await author.save()
+        res.redirect('authors')
     } catch {
         res.render('authors/new', {
                 author: author,
