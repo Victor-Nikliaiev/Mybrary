@@ -20,12 +20,8 @@
         <button class="btn btn-primary" type="submit">Search</button>
     </div>     
 </form>
-<div>  
-    <% books.forEach(book => {  %>
-               
-            <a href="/books/<%= book.id %>"><img height="150" width="100" src="<%= book.coverImagePath %>" alt=""></a> 
-        
-    <% }) %>
+<div style="margin-top: 2rem;">
+    <%- include('../partials/bookGrid', { books: books }) %>
     <% if(books.length == 0) { %> 
         <h3>No books to show</h3>
     <% } %> 
