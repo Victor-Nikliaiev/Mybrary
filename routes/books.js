@@ -43,10 +43,10 @@ router.post('/', async(req, res) => {
             pageCount: req.body.pageCount,
             description: req.body.description
         }) 
-        
+            saveCover(book, req.body.cover) 
         try {
             // const savedCover = 
-            saveCover(book, req.body.cover) 
+            
             // if(savedCover != true) {
             //     renderNewPage(res, book, true)
             //     return
