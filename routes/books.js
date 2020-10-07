@@ -45,11 +45,12 @@ router.post('/', async(req, res) => {
         }) 
         
         try {
-            const savedCover = saveCover(book, req.body.cover) 
-            if(savedCover != true) {
-                renderNewPage(res, book, true)
-                return
-            }
+            // const savedCover = 
+            saveCover(book, req.body.cover) 
+            // if(savedCover != true) {
+            //     renderNewPage(res, book, true)
+            //     return
+            // }
             const newBook = await book.save()
             res.redirect(`books/${newBook.id}`)            
         } catch {  
@@ -152,12 +153,12 @@ async function renderFormPage(res, book, form, hasError = false) {
 }
 
 function saveCover(book, coverEncoded) {
-    if(coverEncoded == null) return false;
+    if(coverEncoded == null) return  // false;
     const cover = JSON.parse(coverEncoded)
     if(cover != null && imageMimeTypes.includes(cover.type)) {
         book.coverImage = new Buffer.from(cover.data, 'base64')
         book.coverImageType = cover.type
-        return true
+        // return true
     }    
 }
 
